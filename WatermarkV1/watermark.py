@@ -1,14 +1,7 @@
-""" Python AzureFUnction to add a watermark to a PDF file
-"""
 import logging
 import azure.functions as func
 
-
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-
-@app.route(route="WatermarkV1")
-def WatermarkV1(req: func.HttpRequest) -> func.HttpResponse:
-    """ HTTP Trigger function to add a watermark to a PDF file"""
+def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     name = req.params.get('name')
@@ -24,7 +17,6 @@ def WatermarkV1(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed.")
     else:
         return func.HttpResponse(
-             "This V2 HTTP triggered function executed successfully. Pass a name for a response.",
+             "This HTTP triggered function executed successfully. Pass a name for a response.",
              status_code=200
         )
-        
